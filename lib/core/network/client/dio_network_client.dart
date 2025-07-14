@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 
+import '../models/success.dart';
+import '../models/failure.dart';
 import '../models/network_request_model.dart';
-import '../models/result.dart';
+import '../models/network_response.dart';
 import '../client/network_client.dart';
 import '../connectivity/connectivity_checker.dart';
 import '../exceptions/network_connectivity_exception.dart';
@@ -21,7 +23,7 @@ class DioNetworkClient implements NetworkClient {
        _exceptionMapper = exceptionMapper;
 
   @override
-  Future<Result<T>> request<T>(
+  Future<NetworkResponse<T>> request<T>(
     NetworkRequestModel req, {
     required HttpMethod method,
     T Function(dynamic)? parser,
@@ -77,7 +79,7 @@ class DioNetworkClient implements NetworkClient {
       }
 
       final data = parser != null ? parser(response.data) : response.data as T;
-      return Success(data: data);
+      return Success(getData: data);
     } catch (e) {
       return Failure(exception: _exceptionMapper.mapException(e as Exception));
     }
