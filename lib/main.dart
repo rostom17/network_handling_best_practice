@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:network_handling_best_practice/core/network/client/network_client.dart';
 import 'package:network_handling_best_practice/core/network/client/network_client_factory.dart';
 import 'package:network_handling_best_practice/core/network/models/network_request_model.dart';
+import 'package:network_handling_best_practice/features/users/data/models/user_model.dart';
+import 'package:network_handling_best_practice/features/users/domain/entities/user_entity.dart';
 
 void main() => runApp(MyApp());
 
